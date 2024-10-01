@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Hauptcontainer für die Anwendung -->
     <div id="app">
         <h1>Schnatter</h1>
+        <!-- Formular zum Erstellen neuer Beiträge -->
         <div class="post-form">
             <textarea v-model="newPostText" placeholder="Was gibt's Neues?"></textarea>
             <div v-if="newPostImage" class="image-preview">
@@ -26,12 +28,13 @@
             >
         </div>
     
+        <!-- Anzeige der Beiträge -->
         <div class="posts">
             <div class="post" v-for="(post, index) in posts" :key="index">
                 <p>{{ post.text }}</p>
                 <img v-if="post.image" :src="post.image" alt="Bild">
                 
-                <!-- Container für die Buttons -->
+                <!-- Aktionen für jeden Beitrag -->
                 <div class="post-actions">
                     <button @click="likePost(index)" class="like-button">Like ({{ post.likes }})</button>
                     <button @click="deletePost(index)" class="delete-button">Löschen</button>
@@ -40,7 +43,7 @@
         </div>
     </div>
     
-
+    <!-- Einbindung der benötigten Skripte -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="main.js"></script>
 </body>

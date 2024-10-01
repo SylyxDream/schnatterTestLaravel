@@ -1,11 +1,12 @@
 const app = new Vue({
     el: '#app',
     data: {
-        newPostText: '', // Text für den neuen Post
-        newPostImage: null, // Bild für den neuen Post
-        posts: [] // Array aller Posts
+        newPostText: '', 
+        newPostImage: null, 
+        posts: [] 
     },
     methods: {
+        // Fügt einen neuen Post hinzu
         addPost() {
             if (this.newPostText.trim()) {
                 const formData = new FormData();
@@ -15,6 +16,7 @@ const app = new Vue({
                     formData.append('image', imageFile);
                 }
 
+                // Sendet den Post an den Server
                 fetch('/upload', {
                     method: 'POST',
                     body: formData
@@ -27,13 +29,14 @@ const app = new Vue({
                             image: data.image,
                             likes: 0
                         };
-                        this.posts.unshift(newPost); // Füge den neuen Post zur Liste hinzu
+                        this.posts.unshift(newPost); 
                     }
                 })
                 .catch(error => {
                     console.error('Fehler beim Hochladen des Posts:', error);
                 });
 
+                // Zurücksetzen der Eingabefelder
                 this.newPostText = '';
                 this.newPostImage = null;
                 
@@ -44,6 +47,7 @@ const app = new Vue({
                 alert('Bitte geben Sie einen Text ein.');
             }
         },
+        // Verarbeitet die Auswahl eines Bildes
         onFileChange(e) {
             const file = e.target.files[0];
             if (file && file.type.match('image.*')) {
@@ -58,9 +62,11 @@ const app = new Vue({
                 this.$refs.fileInput.value = null;
             }
         },
+        // Öffnet den Datei-Auswahldialog
         triggerFileInput() {
             this.$refs.fileInput.click();
         },
+        // Lädt alle Posts vom Server
         loadPosts() {
             fetch('/posts')
                 .then(response => response.json())
@@ -71,6 +77,7 @@ const app = new Vue({
                     console.error('Fehler beim Laden der Posts:', error);
                 });
         },
+        // Löscht einen Post
         deletePost(index) {
             fetch(`/posts/${index}`, {
                 method: 'DELETE'
@@ -78,14 +85,14 @@ const app = new Vue({
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    this.posts.splice(index, 1); // Entferne den Post aus dem Array
+                    this.posts.splice(index, 1);
                 }
             })
             .catch(error => {
                 console.error('Fehler beim Löschen des Posts:', error);
             });
         },
-        // Neue Methode zum Liken eines Posts
+        // Liked einen Post
         likePost(index) {
             fetch(`/posts/${index}/like`, {
                 method: 'PUT'
@@ -93,7 +100,7 @@ const app = new Vue({
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    this.posts[index].likes = data.likes; // Setze die aktualisierte Anzahl der Likes
+                    this.posts[index].likes = data.likes; 
                 }
             })
             .catch(error => {
@@ -101,6 +108,7 @@ const app = new Vue({
             });
         }        
     },
+    // Lädt die Posts beim Erstellen der Komponente
     created() {
         this.loadPosts();
     }
