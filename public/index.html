@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Schnatter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Schnatter</h1>
+        <div class="post-form">
+            <textarea v-model="newPostText" placeholder="Was gibt's Neues?"></textarea>
+            <div v-if="newPostImage" class="image-preview">
+                <p>Bild ausgewählt:</p>
+                <img :src="newPostImage" alt="Vorschau des hochgeladenen Bildes">
+            </div>
+            <button @click="addPost">Posten</button>
+            <button class="upload-button" @click="triggerFileInput">Bild hochladen</button>
+            <input
+                type="file"
+                id="file-input"
+                @change="onFileChange"
+                ref="fileInput"
+                accept="image/*"
+                style="display: none;"
+            >
+        </div>
+    
+        <div class="posts">
+            <div class="post" v-for="(post, index) in posts" :key="index">
+                <p>{{ post.text }}</p>
+                <img v-if="post.image" :src="post.image" alt="Bild">
+                
+                <!-- Container für die Buttons -->
+                <div class="post-actions">
+                    <button @click="likePost(index)" class="like-button">Like ({{ post.likes }})</button>
+                    <button @click="deletePost(index)" class="delete-button">Löschen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="main.js"></script>
+</body>
+</html>

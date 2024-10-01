@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #15202b;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+
+#app {
+    width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    background-color: #15202b;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid orange;
+}
+
+.post-form {
+    background-color: #192734;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.post-form textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #15202b;
+    color: #ffffff;
+    border: 1px solid orange;
+    border-radius: 5px;
+}
+
+.upload-button {
+    background-color: orange;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.upload-button:hover {
+    background-color: #ff9933;
+}
+
+.post-form button {
+    background-color: orange;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.post-form button:hover {
+    background-color: #ff9933;
+}
+
+.posts {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Fügt Abstand zwischen den Posts hinzu */
+}
+
+.post {
+    background-color: #192734;
+    padding: 20px;
+    border-radius: 5px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Fügt Abstand zwischen den Text- und Bildelementen im Post hinzu */
+}
+
+.post p {
+    margin: 0;
+    color: #ffffff;
+}
+
+.post img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.image-preview {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.image-preview p {
+    margin-bottom: 5px;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.post-actions {
+    margin-top: 10px;
+    text-align: right; /* Richtet die Aktion (z.B. Like-Button) nach rechts aus */
+}
+
+.post-actions button {
+    background-color: transparent;
+    color: orange;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.post-actions button:hover {
+    text-decoration: underline;
+}
+
+.delete-button, .like-button {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #ffffff;
+    padding: 5px 10px; /* Kleinere Größe */
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px; /* Kleinere Schriftgröße */
+    margin-left: 5px;
+}
+
+.delete-button:hover {
+    background-color: red;
+    border-color: red;
+}
+
+.like-button:hover {
+    background-color: green;
+    border-color: green;
+}
+
+/* Anordnung der Buttons nebeneinander */
+.post-actions {
+    display: flex;
+    gap: 5px; /* Abstand zwischen den Buttons */
+    margin-top: 10px;
+}
