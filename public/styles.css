@@ -1,0 +1,371 @@
+/* Verhindert das Scrollen des body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #15202b;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Overflow-Probleme vermeiden */
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Verhindert das Scrollen */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #192734;
+    border-bottom: 1px solid #38444d;
+    position: sticky;
+    top: 0;
+    width: 100%; /* Setzt den Header auf die volle Breite */
+    margin: 0 auto; /* Zentrierung */
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+header .profile-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f45d22;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+header .dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: #192734;
+    border: 1px solid #38444d;
+    border-radius: 5px;
+    width: 200px;
+    z-index: 1000;
+}
+
+header .dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header .dropdown-menu ul li {
+    border-bottom: 1px solid #38444d;
+}
+
+header .dropdown-menu ul li a {
+    display: block;
+    padding: 10px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+header .dropdown-menu ul li a:hover {
+    background-color: #283742;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Setzt den Container auf die volle Breite */
+    margin: 0 auto;
+    height: calc(100vh - 61px);
+}
+
+.sidebar {
+    width: 250px; /* Sidebar schmaler gemacht */
+    background-color: #192734;
+    padding: 20px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 61px;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f45d22;
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.sidebar button:hover {
+    background-color: #d94e1f;
+}
+
+/* Ermöglicht das Scrollen innerhalb des Contents */
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Breite der Post-Area */
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #38444d;
+    flex: 1;
+    width: 100%;
+    height: calc(100vh - 61px); /* Höhe des Content-Bereichs anpassen */
+    overflow-y: auto; /* Scrollbar nur für den Content */
+}
+
+/* Minimalistische Scrollbar für Webkit-Browser (Chrome, Safari) */
+.content::-webkit-scrollbar {
+    width: 8px; /* Breite der Scrollbar */
+}
+
+.content::-webkit-scrollbar-track {
+    background: #15202b; /* Hintergrund der Scrollbar-Spur */
+}
+
+.content::-webkit-scrollbar-thumb {
+    background-color: #38444d; /* Farbe der Scrollbar */
+    border-radius: 10px; /* Abgerundete Ecken der Scrollbar */
+    border: 2px solid #15202b; /* Abstand zwischen Scrollbar und Spur */
+}
+
+/* Für Firefox */
+.content {
+    scrollbar-width: thin; /* Dünne Scrollbar */
+    scrollbar-color: #38444d #15202b; /* Scrollbar-Farbe und Spur-Farbe */
+}
+
+.post {
+    background-color: #192734;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #38444d;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.post h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.post p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.post-input {
+    background-color: #192734;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #38444d;
+}
+
+.post-input textarea {
+    width: 100%;
+    background-color: #15202b;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    resize: none;
+    height: 80px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.post-input textarea::placeholder {
+    color: #8899a6;
+}
+
+.post-input input[type="file"] {
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.post-input button {
+    float: right;
+    padding: 10px 20px;
+    background-color: #f45d22;
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.post-input button:hover {
+    background-color: #d94e1f;
+}
+
+.account-overview {
+    background-color: #192734;
+    padding: 20px;
+    border-bottom: 1px solid #38444d;
+}
+
+.account-overview h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.account-info {
+    background-color: #15202b;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.account-info h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.account-info p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.account-overview button {
+    padding: 10px 20px;
+    background-color: #f45d22;
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.account-overview button:hover {
+    background-color: #d94e1f;
+}
+
+.search-view {
+    background-color: #192734;
+    padding: 20px;
+    border-bottom: 1px solid #38444d;
+}
+
+.search-view h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #15202b;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.search-input::placeholder {
+    color: #8899a6;
+}
+
+.search-results {
+    background-color: #15202b;
+    padding: 20px;
+    border-radius: 5px;
+    color: #8899a6;
+}
+
+.search-results p {
+    margin: 0;
+}
+
+.notifications-view {
+    background-color: #192734;
+    padding: 20px;
+    border-bottom: 1px solid #38444d;
+}
+
+.notifications-view h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.notifications-list {
+    background-color: #15202b;
+    padding: 20px;
+    border-radius: 5px;
+    color: #8899a6;
+}
+
+.notifications-list p {
+    margin: 0;
+}
+
+.settings-view {
+    background-color: #192734;
+    padding: 20px;
+    border-bottom: 1px solid #38444d;
+}
+
+.settings-view h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #15202b;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #f45d22;
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #d94e1f;
+}
