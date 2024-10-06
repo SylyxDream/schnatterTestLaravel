@@ -49,12 +49,3 @@ Route::post('/posts', function (Request $request) {
 
     return response()->json($newPost);
 });
-
-Route::post('/clear-posts', function (Request $request) {
-    $filePath = storage_path('posts.json');
-
-    // Datei leeren
-    File::put($filePath, json_encode([])); // Leere JSON-Datei schreiben
-
-    return response()->json(['message' => 'Alle Posts wurden gelöscht']);
-});

@@ -39,6 +39,7 @@
                 </button>
             </div>
 
+            <!--- Post-Eingabe -->
             <div class="content">
                 <div class="post-input" v-if="showPostInput">
                     <textarea v-model="newPostText" placeholder="Was schnatterst du?"></textarea><br>
@@ -73,6 +74,7 @@
                     </div>
                 </div>
 
+                <!-- Einstellungen -->
                 <div class="settings-view" v-if="currentView === 'settings' && !showPostInput">
                     <h2>Einstellungen</h2>
                     <div class="notifications-list">
@@ -85,8 +87,6 @@
                     <div v-for="post in posts" :key="post.id" class="post">
                         <h3>@{{ post.author }}</h3>
                         <p>@{{ post.content }}</p>
-
-                        <!-- Bild anzeigen, wenn vorhanden -->
                         <div v-if="post.image">
                             <img :src="post.image" alt="Bild zum Post" style="max-width: 100%; height: auto;">
                         </div>
